@@ -312,7 +312,12 @@
     <div class="nav-section">Features</div>
     <a class="nav-item ai-item" href="#" onclick="openAI();return false;">
       <svg class="nav-icon" fill="none" viewBox="0 0 16 16" style="opacity:1"><path d="M8 1l1.8 4H14l-3.4 2.5 1.3 4L8 9l-3.9 2.5 1.3-4L2 5h4.2L8 1z" stroke="currentColor" stroke-width="1.3"/></svg>
-      AI in My Work
+      <span>AI in My Work <span class="nav-sub">How I use AI as an SE</span></span>
+      <span class="ai-new-badge">NEW</span>
+    </a>
+    <a class="nav-item ai-item" href="#" onclick="openTools();return false;" style="margin-top:4px;">
+      <svg class="nav-icon" fill="none" viewBox="0 0 16 16" style="opacity:1"><path d="M1 1h6v6H1zM9 1h6v6H9zM1 9h6v6H1zM9 9h6v6H9z" stroke="currentColor" stroke-width="1.3"/></svg>
+      <span>AI Tools I've Created <span class="nav-sub">Personal projects</span></span>
       <span class="ai-new-badge">NEW</span>
     </a>
 
@@ -886,8 +891,8 @@
     </div>
     <div class="ai-use-list">
       <div class="ai-use-item">
-        <div class="ai-use-header"><div class="ai-use-icon">📋</div><div class="ai-use-title">AI-Accelerated RFP Development</div></div>
-        <div class="ai-use-desc">Built AI-assisted RFP workflows that cut response time dramatically; using LLMs to draft, map requirements, and generate first-pass answers from prior win content. Shortened multi-week RFP cycles while improving consistency and quality across 300+ requirement responses.</div>
+        <div class="ai-use-header"><div class="ai-use-icon">🎯</div><div class="ai-use-title">AI-Powered Demo Flow Automation</div></div>
+        <div class="ai-use-desc">Built an AI-powered system to auto-generate personalized demo flows based on prospect industry, pain points, and deal context. Instead of manually scripting each walkthrough, the system produces a structured, persona-specific demo narrative in seconds - letting SEs focus on delivery rather than prep. Reduces demo planning time significantly while increasing relevance for each buyer.</div>
       </div>
       <div class="ai-use-item">
         <div class="ai-use-header"><div class="ai-use-icon">🤖</div><div class="ai-use-title">AI Agent for RFP Orchestration</div></div>
@@ -947,6 +952,16 @@
     document.body.style.overflow = '';
   }
 
+  function openTools() {
+    document.getElementById('toolsOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeTools() {
+    document.getElementById('toolsOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
   function animateCount(el) {
     const target = parseInt(el.dataset.target);
     const start = performance.now();
@@ -964,5 +979,31 @@
     }).observe(el);
   });
 </script>
+
+<!-- TOOLS MODAL -->
+<div class="ai-overlay" id="toolsOverlay" onclick="if(event.target===this)closeTools()">
+  <div class="ai-panel">
+    <div class="ai-panel-close" onclick="closeTools()">✕</div>
+    <div class="ai-panel-header">
+      <div class="ai-panel-icon">🛠️</div>
+      <div>
+        <div class="ai-panel-title">AI Tools I've Created</div>
+        <div class="ai-panel-sub">Personal projects built at the intersection of AI and SE work</div>
+      </div>
+    </div>
+    <div class="ai-use-list">
+      <div class="ai-use-item">
+        <div class="ai-use-header"><div class="ai-use-icon">💻</div><div class="ai-use-title">khurramparacha.me</div></div>
+        <div class="ai-use-desc">A SaaS-style personal dashboard built entirely through vibe coding with Claude. Instead of a traditional resume site, this platform frames me as the vendor - complete with RFP language, career timeline, technical skills, competencies, and an AI section. Fully hosted on GitHub Pages with a custom domain. Built in a few hours as a first-of-many personal projects at the intersection of AI and solutions engineering.</div>
+        <div style="margin-top:8px;"><a href="https://khurramparacha.me" target="_blank" rel="noopener noreferrer" style="font-size:11px;color:var(--accent);font-weight:500;text-decoration:none;">khurramparacha.me &rarr;</a></div>
+      </div>
+      <div class="ai-use-item">
+        <div class="ai-use-header"><div class="ai-use-icon">🔍</div><div class="ai-use-title">Qualify.fyi</div></div>
+        <div class="ai-use-desc">A Discovery Question Bank Generator built for SEs and AEs using the Anthropic API. Input a prospect's industry, pain points, and deal stage and the tool generates a tailored set of discovery questions designed to uncover real business needs and accelerate qualification. Built to solve a real problem SEs face - spending too much time crafting discovery frameworks from scratch before every call.</div>
+        <div style="margin-top:8px;"><a href="https://khurramlparacha-alt.github.io/qualify-fyi" target="_blank" rel="noopener noreferrer" style="font-size:11px;color:var(--accent);font-weight:500;text-decoration:none;">qualify.fyi &rarr;</a></div>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
